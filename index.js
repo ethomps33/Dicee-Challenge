@@ -1,26 +1,25 @@
-var randomNumber1 = Math.floor(Math.random()*6)+1;
+var numPlayers = 2;
+var rolls = {};
 
-var randImg1 = "./images/dice"+randomNumber1+".png"; 
+for (var i = 0; i < numPlayers; i++) {
+    var randomNumber = Math.floor(Math.random()*6)+1;
 
-var image1 = document.querySelectorAll("img")[0];
+    var randImg = "./images/dice"+randomNumber+".png"; 
 
-image1.setAttribute("src", randImg1);
+    var image = document.querySelectorAll("img")[i];
 
-var randomNumber2 = Math.floor(Math.random()*6)+1;
+    image.setAttribute("src", randImg);
 
-var randImg2 = "./images/dice"+randomNumber2+".png";
+    rolls[i] = randomNumber;
+}
+    
 
-var image2 = document.querySelectorAll("img")[1];
-
-image2.setAttribute("src", randImg2);
-
-
-if (randomNumber1 > randomNumber2) {
+if (rolls[0] > rolls[1]) {
     document.querySelector("h1").innerHTML = "Player 1 Wins!";
 }
-else if (randomNumber2 === randomNumber1) {
+else if (rolls[0] === rolls[1]) {
     document.querySelector("h1").innerHTML = "It's a Draw!";
 }
-else if (randomNumber2 > randomNumber1) {
+else if (rolls[1] > rolls[0]) {
     document.querySelector("h1").innerHTML = "Player 2 Wins!";
 }
